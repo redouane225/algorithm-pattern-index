@@ -26,6 +26,7 @@ function run() {
     for (let i = 0; i < enSorted.length; i++) {
       const enP = enSorted[i];
       const frP = frSorted[i];
+      if (!enP || !frP) throw new Error("Missing item during iteration");
 
       if (enP.id !== frP.id) {
          throw new Error(`ID mismatch: EN has ${enP.id}, FR has ${frP.id}`);

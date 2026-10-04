@@ -88,7 +88,7 @@ export function validatePatternArray(data: unknown, filename: string): Pattern[]
       throw new Error(`[${filename}] [${id}] Contains unknown fields: ${extraKeys.join(", ")}`);
     }
 
-    patterns.push(item as Pattern);
+    patterns.push(item as unknown as Pattern);
   }
 
   // Second pass: Ensure related patterns exist

@@ -22,6 +22,7 @@ export function Header({ lang, dict }: Props) {
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
     const isLight = document.documentElement.classList.contains("light");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isDark) setTheme("dark");
     else if (isLight) setTheme("light");
     else setTheme("system");
@@ -39,17 +40,15 @@ export function Header({ lang, dict }: Props) {
     } catch {}
   };
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (pathname && !pathname.match(/^\/(en|fr)$/)) {
-      // If we are on a detail page, navigate to home with search
-      router.push(`/${lang}?q=${encodeURIComponent(query)}`);
+    const formData = new FormData(e.currentTarget);
+    const formQuery = (formData.get("q") as string) || query;
+    const searchString = formQuery ? `?q=${encodeURIComponent(formQuery)}` : "";
+    if (pathname && !pathname.match(/^\/(en|fr)\/patterns$/)) {
+      router.push(`/${lang}/patterns${searchString}`);
     } else {
-      // If on home page, update URL
-      const newUrl = new URL(window.location.href);
-      if (query) newUrl.searchParams.set("q", query);
-      else newUrl.searchParams.delete("q");
-      router.replace(newUrl.pathname + newUrl.search);
+      router.replace(`${pathname || `/${lang}/patterns`}${searchString}`);
     }
   };
 
@@ -75,6 +74,7 @@ export function Header({ lang, dict }: Props) {
           </svg>
           <input 
             type="search" 
+            name="q"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={dict.search?.placeholder || "Search patterns..."}

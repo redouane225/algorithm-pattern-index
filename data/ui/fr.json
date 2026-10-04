@@ -59,5 +59,9 @@
     "beginner": "Débutant",
     "intermediate": "Intermédiaire",
     "advanced": "Avancé"
+  },
+  "patterns": {
+    "title": "Tous les patrons",
+    "subtitle": "Parcourir tous les patrons algorithmiques. Utilisez les filtres pour trouver celui qu'il vous faut."
   }
 }

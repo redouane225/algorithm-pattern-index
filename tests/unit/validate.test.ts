@@ -16,7 +16,7 @@ test("validates valid pattern", () => {
     example: { problem: "p", why: "w" },
     related: []
   }];
-  expect(() => validatePatternArray(data)).not.toThrow();
+  expect(() => validatePatternArray(data, "test.json")).not.toThrow();
 });
 
 test("throws on invalid category", () => {
@@ -34,5 +34,5 @@ test("throws on invalid category", () => {
     example: { problem: "p", why: "w" },
     related: []
   }];
-  expect(() => validatePatternArray(data)).toThrow();
+  expect(() => validatePatternArray(data, "test.json")).toThrow();
 });

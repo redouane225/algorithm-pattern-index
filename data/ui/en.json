@@ -59,5 +59,9 @@
     "beginner": "Beginner",
     "intermediate": "Intermediate",
     "advanced": "Advanced"
+  },
+  "patterns": {
+    "title": "All Patterns",
+    "subtitle": "Browse all algorithmic patterns. Use the filters to find the right one."
   }
 }
