@@ -32,20 +32,20 @@ export default async function IndexPage({ params }: { params: Params }): Promise
         </svg>
       </div>
 
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#10B981]/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 mix-blend-screen pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#3B82F6]/20 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2 mix-blend-screen pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 md:w-[500px] md:h-[500px] bg-[#10B981]/20 rounded-full blur-[80px] md:blur-[100px] -translate-x-1/2 -translate-y-1/2 mix-blend-screen pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-60 h-60 md:w-[400px] md:h-[400px] bg-[#3B82F6]/20 rounded-full blur-[80px] md:blur-[100px] translate-x-1/2 translate-y-1/2 mix-blend-screen pointer-events-none"></div>
       
-      <div className="relative z-10 max-w-4xl px-6 space-y-8 flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 mt-16">
-        <div className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-emerald-400 tracking-widest uppercase backdrop-blur-sm border border-white/10">
+      <div className="relative z-10 max-w-4xl px-4 md:px-6 space-y-8 flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 mt-12 md:mt-16">
+        <div className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-[10px] md:text-xs font-semibold text-emerald-400 tracking-widest uppercase backdrop-blur-sm border border-white/10 text-center">
           Learn &bull; Recognize &bull; Solve
         </div>
         
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 drop-shadow-sm pb-2">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 drop-shadow-sm pb-2 break-words">
           {dict.site.title}
         </h1>
         
         <div className="space-y-4">
-           <p className="text-xl md:text-2xl text-gray-300 font-medium max-w-2xl leading-relaxed">
+           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium max-w-2xl leading-relaxed">
              {dict.site.tagline}
            </p>
         </div>

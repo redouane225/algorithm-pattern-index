@@ -80,15 +80,24 @@ export function PatternBrowser({ patterns, dict, lang }: Props) {
   );
 
   return (
-    <div data-hydrated={mounted} className="max-w-6xl mx-auto py-12 px-6 md:px-12 w-full space-y-8 animate-in fade-in duration-300">
-      <div id="patterns-grid" className="space-y-8">
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div data-hydrated={mounted} className="max-w-6xl mx-auto py-8 md:py-12 px-4 sm:px-6 md:px-12 w-full space-y-6 md:space-y-8 animate-in fade-in duration-300">
+      <div id="patterns-grid" className="space-y-6 md:space-y-8">
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold text-text">{dict.patterns?.title || "All Patterns"}</h2>
-            <p className="text-text-muted">{dict.patterns?.subtitle || "Browse all algorithmic patterns."}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl font-bold text-text tracking-tight break-words">
+                {dict.patterns?.title || "All Patterns"}
+              </h1>
+              {mounted && (
+                <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-sm font-medium text-accent ring-1 ring-inset ring-accent/20 shrink-0">
+                  {filteredPatterns.length} {filteredPatterns.length === 1 ? dict.results.count.one.split(' ')[1] || 'pattern' : dict.results.count.other.replace('{count}', '').trim().split(' ')[0] || 'patterns'}
+                </span>
+              )}
+            </div>
+            <p className="text-text-muted text-sm md:text-base">{dict.patterns?.subtitle || "Browse all algorithmic patterns."}</p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 shrink-0 w-full md:w-auto">
             {/* Category Dropdown */}
             <div className="w-full sm:w-64">
                <label htmlFor="category-select" className="sr-only">{dict.filters?.category || "Category"}</label>

@@ -41,8 +41,8 @@ export default async function PatternPage({ params }: { params: Params }) {
   const badgeText = pattern.difficulty === "beginner" ? "text-badge-beginner-text" : pattern.difficulty === "intermediate" ? "text-badge-intermediate-text" : "text-badge-advanced-text";
 
   return (
-    <main className="max-w-6xl mx-auto py-12 px-6 md:px-12 w-full space-y-10">
-      <nav aria-label="Breadcrumb" className="mb-8">
+    <main className="max-w-6xl mx-auto py-8 md:py-12 px-4 sm:px-6 md:px-12 w-full space-y-8 md:space-y-10">
+      <nav aria-label="Breadcrumb" className="mb-6 md:mb-8">
         <Link href={`/${lang}#all`} className="text-text-muted hover:text-text font-medium inline-flex items-center gap-2 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-focus-ring outline-none rounded-md px-1 py-0.5">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" className="h-3 w-3"><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
           Back to all patterns
@@ -50,16 +50,16 @@ export default async function PatternPage({ params }: { params: Params }) {
       </nav>
 
       <header className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-        <div className="flex gap-4 items-start">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#10B981] text-white shadow-sm">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8">
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <div className="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-2xl bg-[#10B981] text-white shadow-sm">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 sm:h-8 sm:w-8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
             </svg>
           </div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-3">
-              <h1 className="text-3xl font-bold text-text tracking-tight">{pattern.name}</h1>
-              <span className={`text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ${badgeBg} ${badgeText}`}>
+          <div className="space-y-2 w-full">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <h1 className="text-2xl sm:text-3xl font-bold text-text tracking-tight break-words">{pattern.name}</h1>
+              <span className={`text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full shrink-0 ${badgeBg} ${badgeText}`}>
                 {dict.difficulties[pattern.difficulty]}
               </span>
             </div>
@@ -74,20 +74,20 @@ export default async function PatternPage({ params }: { params: Params }) {
           </div>
         </div>
 
-        <div className="flex gap-4">
+        <div className="grid grid-cols-2 md:flex md:flex-col gap-3 md:gap-4 shrink-0 mt-2 md:mt-0 w-full md:w-auto">
           <div className="flex flex-col rounded-lg border border-border bg-surface px-4 py-2 text-center min-w-[100px]">
              <span className="text-[10px] text-text-muted font-semibold uppercase tracking-wider">{dict.detail.time}</span>
-             <span className="font-mono font-medium text-text text-sm mt-1">{pattern.time}</span>
+             <span className="font-mono font-medium text-text text-xs sm:text-sm mt-1 truncate">{pattern.time}</span>
           </div>
           <div className="flex flex-col rounded-lg border border-border bg-surface px-4 py-2 text-center min-w-[100px]">
              <span className="text-[10px] text-text-muted font-semibold uppercase tracking-wider">{dict.detail.space}</span>
-             <span className="font-mono font-medium text-text text-sm mt-1">{pattern.space}</span>
+             <span className="font-mono font-medium text-text text-xs sm:text-sm mt-1 truncate">{pattern.space}</span>
           </div>
         </div>
       </header>
 
-      <div className="grid md:grid-cols-3 gap-10 pt-4 border-t border-border/50">
-        <div className="md:col-span-2 space-y-12">
+      <div className="grid md:grid-cols-3 gap-8 md:gap-10 pt-4 border-t border-border/50">
+        <div className="md:col-span-2 space-y-10 md:space-y-12">
           {/* When to recognize it */}
           <section className="space-y-4">
             <h2 className="text-lg font-bold text-text flex items-center gap-2">
@@ -96,7 +96,7 @@ export default async function PatternPage({ params }: { params: Params }) {
               </span>
               {dict.detail.recognize}
             </h2>
-            <div className="text-text-muted text-sm space-y-2 pl-7">
+            <div className="text-text-muted text-sm space-y-2 pl-0 sm:pl-7">
               <p>Look for:</p>
               <ul className="list-disc pl-5 space-y-1.5">
                 {pattern.recognize.map((clue, idx) => (
@@ -114,7 +114,7 @@ export default async function PatternPage({ params }: { params: Params }) {
               </span>
               {dict.detail.idea}
             </h2>
-            <p className="text-text-muted text-sm pl-7 leading-relaxed">{pattern.idea}</p>
+            <p className="text-text-muted text-sm pl-0 sm:pl-7 leading-relaxed">{pattern.idea}</p>
           </section>
 
           {/* Pseudocode */}
@@ -125,7 +125,7 @@ export default async function PatternPage({ params }: { params: Params }) {
               </span>
               {dict.detail.pseudocode}
             </h2>
-            <div className="bg-[#1E293B] text-[#F8FAFC] rounded-xl p-5 overflow-x-auto shadow-inner ml-7">
+            <div className="bg-[#1E293B] text-[#F8FAFC] rounded-xl p-4 sm:p-5 overflow-x-auto shadow-inner ml-0 sm:ml-7">
                <div className="flex justify-end mb-2">
                  <button className="text-xs text-[#94A3B8] hover:text-white flex items-center gap-1">
                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
