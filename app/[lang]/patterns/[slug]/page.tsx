@@ -43,7 +43,7 @@ export default async function PatternPage({ params }: { params: Params }) {
   return (
     <main className="max-w-6xl mx-auto py-8 md:py-12 px-4 sm:px-6 md:px-12 w-full space-y-8 md:space-y-10">
       <nav aria-label="Breadcrumb" className="mb-6 md:mb-8">
-        <Link href={`/${lang}#all`} className="text-text-muted hover:text-text font-medium inline-flex items-center gap-2 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-focus-ring outline-none rounded-md px-1 py-0.5">
+        <Link href={`/${lang}/patterns`} className="text-text-muted hover:text-text font-medium inline-flex items-center gap-2 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-focus-ring outline-none rounded-md px-1 py-0.5">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" className="h-3 w-3"><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
           Back to all patterns
         </Link>
