@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Pattern } from "@/types/pattern";
+import type { Pattern } from "@/types/pattern";
 import { searchPatterns } from "@/lib/search";
 import { CATEGORY_IDS, DIFFICULTIES } from "@/lib/taxonomy";
 import Link from "next/link";
 
 interface Props {
   patterns: Pattern[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dict: any;
   lang: string;
 }

@@ -1,7 +1,7 @@
 import { getPatterns, getDictionary } from "@/lib/data";
 import { isLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
-import { Locale } from "@/types/pattern";
+import type { Locale } from "@/types/pattern";
 import { SearchAndFilter } from "@/components/SearchAndFilter";
 
 type Params = Promise<{ lang: string }>;

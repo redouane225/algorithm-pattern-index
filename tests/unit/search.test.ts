@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { normalize, searchPatterns } from "../../lib/search";
-import { Pattern } from "../../types/pattern";
+import type { Pattern } from "../../types/pattern";
 
 const testPatterns: Pattern[] = [
   {

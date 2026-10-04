@@ -1,4 +1,4 @@
-import { Pattern } from "@/types/pattern";
+import type { Pattern } from "@/types/pattern";
 
 export function normalize(text: string): string {
   return text

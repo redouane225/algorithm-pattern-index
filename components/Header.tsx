@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { swapLocaleInPath } from "@/lib/i18n";
-import { Locale } from "@/types/pattern";
+import type { Locale } from "@/types/pattern";
 
 interface Props {
   lang: Locale;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dict: any;
 }
 
@@ -18,8 +19,11 @@ export function Header({ lang, dict }: Props) {
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
     const isLight = document.documentElement.classList.contains("light");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isDark) setTheme("dark");
+     
     else if (isLight) setTheme("light");
+     
     else setTheme("system");
   }, []);
 

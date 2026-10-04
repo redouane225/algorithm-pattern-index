@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
-import { Pattern, Locale } from "../types/pattern";
+import type { Pattern, Locale } from "../types/pattern";
 
 export function getPatterns(lang: Locale): Pattern[] {
   const filePath = join(process.cwd(), "data", `patterns.${lang}.json`);

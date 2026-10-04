@@ -4,7 +4,7 @@ import { ThemeScript } from "@/components/ThemeScript";
 import { Header } from "@/components/Header";
 import { LOCALES, isLocale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/data";
-import { Locale } from "@/types/pattern";
+import type { Locale } from "@/types/pattern";
 import "../globals.css";
 
 // Only /en and /fr exist; any other first segment is a 404.

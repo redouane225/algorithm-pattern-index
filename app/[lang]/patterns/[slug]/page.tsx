@@ -1,9 +1,9 @@
 import { getPatterns, getPattern, getDictionary } from "@/lib/data";
 import { isLocale, LOCALES } from "@/lib/i18n";
 import { notFound } from "next/navigation";
-import { Locale } from "@/types/pattern";
+import type { Locale } from "@/types/pattern";
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const dynamicParams = false;
 
