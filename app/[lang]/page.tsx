@@ -20,7 +20,7 @@ export default async function IndexPage({ params }: { params: Params }): Promise
         <p className="text-lg text-text-muted">{dict.site.tagline}</p>
       </header>
 
-      <SearchAndFilter patterns={patterns} dict={dict} />
+      <SearchAndFilter patterns={patterns} dict={dict} lang={lang} />
     </main>
   );
 }

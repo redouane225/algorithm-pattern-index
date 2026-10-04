@@ -4,13 +4,15 @@ import { useState, useMemo } from "react";
 import { Pattern } from "@/types/pattern";
 import { searchPatterns } from "@/lib/search";
 import { CATEGORY_IDS, DIFFICULTIES } from "@/lib/taxonomy";
+import Link from "next/link";
 
 interface Props {
   patterns: Pattern[];
   dict: any;
+  lang: string;
 }
 
-export function SearchAndFilter({ patterns, dict }: Props) {
+export function SearchAndFilter({ patterns, dict, lang }: Props) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("all");
   const [difficulty, setDifficulty] = useState<string>("all");
@@ -101,7 +103,7 @@ export function SearchAndFilter({ patterns, dict }: Props) {
             const badgeText = pattern.difficulty === "beginner" ? "text-badge-beginner-text" : pattern.difficulty === "intermediate" ? "text-badge-intermediate-text" : "text-badge-advanced-text";
 
             return (
-              <div key={pattern.id} className="rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md flex flex-col">
+              <Link href={`/${lang}/patterns/${pattern.id}`} key={pattern.id} className="rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md flex flex-col focus-visible:ring-2 focus-visible:ring-focus-ring outline-none">
                 <h2 className="text-xl font-semibold text-text">{pattern.name}</h2>
                 <div className="mt-3 flex items-center gap-2 text-sm text-text-muted">
                   <span className={`capitalize rounded-full px-2 py-0.5 font-medium ${badgeBg} ${badgeText}`}>
@@ -119,7 +121,7 @@ export function SearchAndFilter({ patterns, dict }: Props) {
                     </span>
                   ))}
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>

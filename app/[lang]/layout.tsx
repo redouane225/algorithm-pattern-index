@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ThemeScript } from "@/components/ThemeScript";
+import { Header } from "@/components/Header";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { getDictionary } from "@/lib/data";
+import { Locale } from "@/types/pattern";
 import "../globals.css";
 
 // Only /en and /fr exist; any other first segment is a 404.
@@ -22,13 +25,18 @@ export default async function LangLayout({
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
 
+  const dict = getDictionary(lang as Locale);
+
   return (
     // The theme script adds a class to <html> before hydration.
     <html lang={lang} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header lang={lang as Locale} dict={dict} />
+        {children}
+      </body>
     </html>
   );
 }

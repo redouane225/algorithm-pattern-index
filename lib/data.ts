@@ -15,3 +15,8 @@ export function getDictionary(lang: Locale) {
   const fileData = readFileSync(filePath, "utf-8");
   return JSON.parse(fileData);
 }
+
+export function getPattern(lang: Locale, id: string): Pattern | undefined {
+  const patterns = getPatterns(lang);
+  return patterns.find((p) => p.id === id);
+}
