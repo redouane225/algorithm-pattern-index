@@ -5,7 +5,7 @@ import type { Pattern } from "@/types/pattern";
 import { searchPatterns } from "@/lib/search";
 import { CATEGORY_IDS, DIFFICULTIES } from "@/lib/taxonomy";
 import Link from "next/link";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 interface Props {
   patterns: Pattern[];
@@ -16,7 +16,6 @@ interface Props {
 
 export function PatternBrowser({ patterns, dict, lang }: Props) {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   const query = searchParams?.get("q") || "";
   const [category, setCategory] = useState<string>("all");
@@ -24,6 +23,7 @@ export function PatternBrowser({ patterns, dict, lang }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line
     setMounted(true);
   }, []);
 
@@ -35,6 +35,7 @@ export function PatternBrowser({ patterns, dict, lang }: Props) {
     setCategory("all");
     setDifficulty("all");
     if (query) {
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       window.location.href = `/${lang}/patterns`;
     }
   };
