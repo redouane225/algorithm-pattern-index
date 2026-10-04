@@ -1,0 +1,63 @@
+{
+  "site": {
+    "title": "Algorithm Pattern Index",
+    "tagline": "A dictionary of algorithmic patterns and problem-solving strategies"
+  },
+  "search": {
+    "label": "Search patterns",
+    "placeholder": "Search by name, category, or keyword..."
+  },
+  "filters": {
+    "category": "Category",
+    "difficulty": "Difficulty",
+    "all": "All",
+    "clear": "Clear filters"
+  },
+  "results": {
+    "count": {
+      "one": "1 pattern found",
+      "other": "{count} patterns found"
+    },
+    "empty": "No patterns match your search criteria.",
+    "emptyHint": "Try adjusting your filters or search terms."
+  },
+  "detail": {
+    "back": "Back to patterns",
+    "recognize": "When you see this...",
+    "idea": "Core idea",
+    "pseudocode": "Pseudocode",
+    "complexity": "Complexity",
+    "time": "Time:",
+    "space": "Space:",
+    "example": "Example",
+    "problem": "Problem:",
+    "why": "Why it fits:",
+    "related": "Related patterns"
+  },
+  "nav": {
+    "language": "Français",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The pattern or page you are looking for does not exist.",
+    "home": "Return to home"
+  },
+  "categories": {
+    "basic": "Basic",
+    "lookup": "Lookup & Hashing",
+    "sequences": "Sequences & Arrays",
+    "searching": "Searching & Traversing",
+    "recursion": "Recursion & Backtracking",
+    "optimization": "Optimization (DP & Greedy)",
+    "combinatorial": "Combinatorial & Math"
+  },
+  "difficulties": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  }
+}

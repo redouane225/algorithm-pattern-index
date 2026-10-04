@@ -1,0 +1,89 @@
+[
+  {
+    "id": "sliding-window",
+    "name": "Sliding Window",
+    "category": "sequences",
+    "difficulty": "intermediate",
+    "tags": ["array", "string", "subarray", "substring", "contiguous"],
+    "recognize": [
+      "The problem asks for something among contiguous subarrays or substrings.",
+      "You are asked to find the maximum/minimum/longest/shortest of something.",
+      "You need to calculate a running average or sum."
+    ],
+    "idea": "Maintain a window (a subset of the array/string) that satisfies the problem's constraints. Expand the window by moving the right edge, and shrink it by moving the left edge when the constraints are violated, keeping track of the optimal answer.",
+    "pseudocode": [
+      "Initialize left pointer, right pointer, and any running state (sum, count, etc.).",
+      "Iterate right pointer over the array.",
+      "Update the running state with the element at the right pointer.",
+      "While the current window violates the constraints:",
+      "  Update the optimal answer if needed.",
+      "  Remove the element at the left pointer from the running state.",
+      "  Increment the left pointer.",
+      "Update the optimal answer if needed (depending on problem specifics)."
+    ],
+    "time": "O(n)",
+    "space": "O(1) or O(k)",
+    "example": {
+      "problem": "Longest Substring Without Repeating Characters",
+      "why": "We need to find the longest contiguous substring. As we expand the window, if we encounter a repeating character, we shrink the window from the left until the repeating character is removed."
+    },
+    "related": ["two-pointers"]
+  },
+  {
+    "id": "two-pointers",
+    "name": "Two Pointers",
+    "category": "sequences",
+    "difficulty": "beginner",
+    "tags": ["array", "string", "sorted", "pairs"],
+    "recognize": [
+      "You are dealing with a sorted array (or linked list) and need to find a set of elements that fulfill certain constraints.",
+      "You need to compare elements from opposite ends of a sequence.",
+      "You need to partition an array into two parts."
+    ],
+    "idea": "Use two pointers iterating through the data structure in tandem. They can start from opposite ends and move towards each other, or start from the same end and move at different speeds.",
+    "pseudocode": [
+      "Initialize two pointers (e.g., left at 0, right at n-1).",
+      "Loop while left < right:",
+      "  Evaluate the condition using elements at left and right.",
+      "  If the condition is met, record the answer and move pointers.",
+      "  If the value is too small, increment left.",
+      "  If the value is too large, decrement right."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "example": {
+      "problem": "Two Sum II - Input Array Is Sorted",
+      "why": "The array is sorted. We place pointers at the start and end. If the sum is too small, we move the left pointer to increase it. If too large, we move the right pointer to decrease it."
+    },
+    "related": ["sliding-window", "binary-search"]
+  },
+  {
+    "id": "binary-search",
+    "name": "Binary Search",
+    "category": "searching",
+    "difficulty": "beginner",
+    "tags": ["array", "sorted", "search", "divide-and-conquer"],
+    "recognize": [
+      "You need to find a target value or the insertion point in a sorted array.",
+      "The problem requires O(log n) time complexity.",
+      "You need to find the first or last occurrence of a condition (binary search on answer)."
+    ],
+    "idea": "Repeatedly divide the search interval in half. If the target value is less than the middle element, narrow the interval to the lower half. Otherwise, narrow it to the upper half.",
+    "pseudocode": [
+      "Initialize left to 0 and right to n-1.",
+      "Loop while left <= right:",
+      "  Calculate mid = left + (right - left) / 2.",
+      "  If array[mid] == target, return mid.",
+      "  If array[mid] < target, update left = mid + 1.",
+      "  Else, update right = mid - 1.",
+      "Return not found."
+    ],
+    "time": "O(log n)",
+    "space": "O(1)",
+    "example": {
+      "problem": "Find First and Last Position of Element in Sorted Array",
+      "why": "The array is sorted, and we need O(log n) time. We use binary search twice: once to find the first occurrence and once to find the last."
+    },
+    "related": ["two-pointers"]
+  }
+]

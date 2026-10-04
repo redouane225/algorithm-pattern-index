@@ -1,0 +1,89 @@
+[
+  {
+    "id": "sliding-window",
+    "name": "Fenêtre Glissante",
+    "category": "sequences",
+    "difficulty": "intermediate",
+    "tags": ["tableau", "chaîne", "sous-tableau", "sous-chaîne", "contigu"],
+    "recognize": [
+      "Le problème concerne des sous-tableaux ou sous-chaînes contigus.",
+      "On vous demande de trouver le maximum/minimum/plus long/plus court de quelque chose.",
+      "Vous devez calculer une moyenne ou une somme courante."
+    ],
+    "idea": "Maintenir une fenêtre (un sous-ensemble du tableau/chaîne) qui satisfait les contraintes du problème. Agrandissez la fenêtre en déplaçant le bord droit, et réduisez-la en déplaçant le bord gauche lorsque les contraintes sont violées, tout en gardant une trace de la réponse optimale.",
+    "pseudocode": [
+      "Initialiser le pointeur gauche, le pointeur droit, et l'état courant (somme, compte, etc.).",
+      "Itérer le pointeur droit sur le tableau.",
+      "Mettre à jour l'état courant avec l'élément au pointeur droit.",
+      "Tant que la fenêtre actuelle viole les contraintes :",
+      "  Mettre à jour la réponse optimale si nécessaire.",
+      "  Retirer l'élément au pointeur gauche de l'état courant.",
+      "  Incrémenter le pointeur gauche.",
+      "Mettre à jour la réponse optimale si nécessaire (selon le problème)."
+    ],
+    "time": "O(n)",
+    "space": "O(1) ou O(k)",
+    "example": {
+      "problem": "Plus longue sous-chaîne sans caractères répétés",
+      "why": "Nous devons trouver la plus longue sous-chaîne contiguë. En agrandissant la fenêtre, si nous rencontrons un caractère répété, nous réduisons la fenêtre par la gauche jusqu'à ce que ce caractère soit retiré."
+    },
+    "related": ["two-pointers"]
+  },
+  {
+    "id": "two-pointers",
+    "name": "Deux Pointeurs",
+    "category": "sequences",
+    "difficulty": "beginner",
+    "tags": ["tableau", "chaîne", "trié", "paires"],
+    "recognize": [
+      "Vous traitez un tableau trié (ou liste chaînée) et devez trouver un ensemble d'éléments respectant certaines contraintes.",
+      "Vous devez comparer des éléments des extrémités opposées d'une séquence.",
+      "Vous devez partitionner un tableau en deux parties."
+    ],
+    "idea": "Utiliser deux pointeurs parcourant la structure de données en tandem. Ils peuvent commencer aux extrémités opposées et se rapprocher, ou commencer du même côté et avancer à des vitesses différentes.",
+    "pseudocode": [
+      "Initialiser deux pointeurs (ex: gauche à 0, droite à n-1).",
+      "Boucle tant que gauche < droite :",
+      "  Évaluer la condition avec les éléments à gauche et à droite.",
+      "  Si la condition est remplie, enregistrer la réponse et déplacer les pointeurs.",
+      "  Si la valeur est trop petite, incrémenter gauche.",
+      "  Si la valeur est trop grande, décrémenter droite."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "example": {
+      "problem": "Somme de deux nombres II - Le tableau d'entrée est trié",
+      "why": "Le tableau est trié. Nous plaçons des pointeurs au début et à la fin. Si la somme est trop petite, nous déplaçons le pointeur gauche pour l'augmenter. Si trop grande, nous déplaçons le droit pour la diminuer."
+    },
+    "related": ["sliding-window", "binary-search"]
+  },
+  {
+    "id": "binary-search",
+    "name": "Recherche Dichotomique",
+    "category": "searching",
+    "difficulty": "beginner",
+    "tags": ["tableau", "trié", "recherche", "diviser-pour-régner"],
+    "recognize": [
+      "Vous devez trouver une valeur cible ou le point d'insertion dans un tableau trié.",
+      "Le problème exige une complexité temporelle de O(log n).",
+      "Vous devez trouver la première ou la dernière occurrence d'une condition (recherche dichotomique sur la réponse)."
+    ],
+    "idea": "Diviser répétitivement l'intervalle de recherche en deux. Si la valeur cible est inférieure à l'élément central, restreindre l'intervalle à la moitié inférieure. Sinon, le restreindre à la moitié supérieure.",
+    "pseudocode": [
+      "Initialiser gauche à 0 et droite à n-1.",
+      "Boucle tant que gauche <= droite :",
+      "  Calculer mid = gauche + (droite - gauche) / 2.",
+      "  Si tableau[mid] == cible, retourner mid.",
+      "  Si tableau[mid] < cible, mettre à jour gauche = mid + 1.",
+      "  Sinon, mettre à jour droite = mid - 1.",
+      "Retourner non trouvé."
+    ],
+    "time": "O(log n)",
+    "space": "O(1)",
+    "example": {
+      "problem": "Trouver la première et la dernière position d'un élément dans un tableau trié",
+      "why": "Le tableau est trié, et nous avons besoin de O(log n) temps. Nous utilisons la recherche dichotomique deux fois : une pour la première occurrence et une pour la dernière."
+    },
+    "related": ["two-pointers"]
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "site": {
+    "title": "Index des patrons d'algorithmes",
+    "tagline": "Un dictionnaire de patrons algorithmiques et stratégies de résolution"
+  },
+  "search": {
+    "label": "Rechercher des patrons",
+    "placeholder": "Rechercher par nom, catégorie, ou mot-clé..."
+  },
+  "filters": {
+    "category": "Catégorie",
+    "difficulty": "Difficulté",
+    "all": "Toutes",
+    "clear": "Effacer les filtres"
+  },
+  "results": {
+    "count": {
+      "one": "1 patron trouvé",
+      "other": "{count} patrons trouvés"
+    },
+    "empty": "Aucun patron ne correspond à votre recherche.",
+    "emptyHint": "Essayez d'ajuster vos filtres ou termes de recherche."
+  },
+  "detail": {
+    "back": "Retour aux patrons",
+    "recognize": "Quand vous voyez ceci...",
+    "idea": "Idée principale",
+    "pseudocode": "Pseudocode",
+    "complexity": "Complexité",
+    "time": "Temps :",
+    "space": "Espace :",
+    "example": "Exemple",
+    "problem": "Problème :",
+    "why": "Pourquoi ça correspond :",
+    "related": "Patrons associés"
+  },
+  "nav": {
+    "language": "English",
+    "theme": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "Le patron ou la page que vous recherchez n'existe pas.",
+    "home": "Retour à l'accueil"
+  },
+  "categories": {
+    "basic": "Bases",
+    "lookup": "Recherche & Hachage",
+    "sequences": "Séquences & Tableaux",
+    "searching": "Recherche & Parcours",
+    "recursion": "Récursivité & Retour sur trace",
+    "optimization": "Optimisation (Prog. Dyn. & Glouton)",
+    "combinatorial": "Combinatoire & Mathématiques"
+  },
+  "difficulties": {
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé"
+  }
+}
