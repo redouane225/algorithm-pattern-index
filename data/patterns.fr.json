@@ -22,7 +22,7 @@
       "Mettre à jour la réponse optimale si nécessaire (selon le problème)."
     ],
     "time": "O(n)",
-    "space": "O(1) ou O(k)",
+    "space": "O(1) or O(k)",
     "example": {
       "problem": "Plus longue sous-chaîne sans caractères répétés",
       "why": "Nous devons trouver la plus longue sous-chaîne contiguë. En agrandissant la fenêtre, si nous rencontrons un caractère répété, nous réduisons la fenêtre par la gauche jusqu'à ce que ce caractère soit retiré."

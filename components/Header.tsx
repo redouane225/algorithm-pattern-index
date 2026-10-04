@@ -22,11 +22,8 @@ export function Header({ lang, dict }: Props) {
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
     const isLight = document.documentElement.classList.contains("light");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isDark) setTheme("dark");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     else if (isLight) setTheme("light");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     else setTheme("system");
   }, []);
 

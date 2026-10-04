@@ -33,10 +33,6 @@ export function PatternBrowser({ patterns, dict, lang }: Props) {
     }
   };
 
-  const scrollToPatterns = () => {
-    document.getElementById('patterns-grid')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const getDifficultyStyles = (diff: string) => {
     if (diff === "beginner") return "bg-badge-beginner-bg text-badge-beginner-text";
     if (diff === "intermediate") return "bg-badge-intermediate-bg text-badge-intermediate-text";
@@ -112,7 +108,7 @@ export function PatternBrowser({ patterns, dict, lang }: Props) {
 
         {query && (
            <div className="text-sm text-text-muted flex items-center justify-between">
-              <span>{filteredPatterns.length} results for "{query}"</span>
+              <span>{filteredPatterns.length} results for &quot;{query}&quot;</span>
               <button onClick={clearFilters} className="text-accent hover:underline font-medium">Clear Search</button>
            </div>
         )}
