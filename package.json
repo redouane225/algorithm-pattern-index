@@ -1,0 +1,48 @@
+{
+  "name": "algorithm-pattern-index",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A bilingual (EN/FR) personal dictionary of algorithmic patterns and problem-solving strategies.",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "validate:data": "tsx scripts/validate-data.ts",
+    "prebuild": "npm run validate:data",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "audit": "npm audit --omit=dev --audit-level=high",
+    "audit:full": "npm audit",
+    "format": "prettier --write .",
+    "check": "npm run lint && npm run typecheck && npm run validate:data && npm test && npm run audit && npm run build && npm run test:e2e"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "24.19.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.8",
+    "prettier": "3.9.9",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.0",
+    "vitest": "4.1.11"
+  },
+  "overrides": {
+    "vite": "^7.0.0"
+  }
+}

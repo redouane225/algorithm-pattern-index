@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (docs/07-ui-design.md).
+ * Each token holds both theme values via light-dark(); the active value is picked
+ * by `color-scheme`. By default it follows the OS. The theme script in the layout
+ * adds `.light` or `.dark` on <html> to force a choice. See DECISIONS.md.
+ */
+:root {
+  color-scheme: light dark;
+
+  --bg: light-dark(#f7f8fa, #0b1020);
+  --surface: light-dark(#ffffff, #121829);
+  --surface-muted: light-dark(#eef1f5, #1a2236);
+  --border: light-dark(#d5dae3, #2c3753);
+  --text: light-dark(#0f172a, #e6e9f2);
+  --text-muted: light-dark(#4a5568, #a7b0c5);
+  --accent: light-dark(#3f3cbb, #aab6ff);
+  --accent-contrast: light-dark(#ffffff, #0b1020);
+  --focus-ring: light-dark(#4f46e5, #c7d0ff);
+
+  --badge-neutral-bg: light-dark(#eef1f5, #1f2940);
+  --badge-neutral-text: light-dark(#1e293b, #d6dcea);
+  --badge-beginner-bg: light-dark(#dcf5e5, #0f2e1d);
+  --badge-beginner-text: light-dark(#14532d, #8ee6ab);
+  --badge-intermediate-bg: light-dark(#fdf0cd, #33260b);
+  --badge-intermediate-text: light-dark(#7a3a06, #f7d26b);
+  --badge-advanced-bg: light-dark(#fde2e2, #3a1418);
+  --badge-advanced-text: light-dark(#8f1c1c, #fcaaaa);
+}
+
+:root.light {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-focus-ring: var(--focus-ring);
+  --color-badge-neutral-bg: var(--badge-neutral-bg);
+  --color-badge-neutral-text: var(--badge-neutral-text);
+  --color-badge-beginner-bg: var(--badge-beginner-bg);
+  --color-badge-beginner-text: var(--badge-beginner-text);
+  --color-badge-intermediate-bg: var(--badge-intermediate-bg);
+  --color-badge-intermediate-text: var(--badge-intermediate-text);
+  --color-badge-advanced-bg: var(--badge-advanced-bg);
+  --color-badge-advanced-text: var(--badge-advanced-text);
+
+  --font-sans:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    @apply bg-bg text-text font-sans antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply min-h-dvh text-base leading-relaxed;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-focus-ring;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
