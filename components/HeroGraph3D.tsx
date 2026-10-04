@@ -43,7 +43,7 @@ export function HeroGraph3D() {
     });
 
     // travelling pulses along edges
-    const pulses = Array.from({ length: 6 }, () => ({ e: Math.floor(Math.random() * edges.length), t: Math.random() }));
+    const pulses = Array.from({ length: 3 }, () => ({ e: Math.floor(Math.random() * edges.length), t: Math.random() }));
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
@@ -108,10 +108,10 @@ export function HeroGraph3D() {
 
       // pulses
       for (const p of pulses) {
-        if (!reduce) p.t += 0.012;
+        if (!reduce) p.t += 0.0035;
         const [a, b] = edges[p.e]!;
         if (p.t >= 1) {
-          lit[b] = 1;
+          lit[b] = 0.6;
           // hop to a connected edge
           const next = edges.map((e, i) => ({ e, i })).filter(({ e }) => e[0] === b || e[1] === b);
           const pick = next[Math.floor(Math.random() * next.length)]!;
@@ -121,15 +121,19 @@ export function HeroGraph3D() {
           continue;
         }
         const pa = proj[a]!, pb = proj[b]!;
-        const x = pa.x + (pb.x - pa.x) * p.t;
-        const y = pa.y + (pb.y - pa.y) * p.t;
-        const tail = 0.18;
-        const t0 = Math.max(0, p.t - tail);
+        // ease in/out so the light glides instead of snapping
+        const e = p.t * p.t * (3 - 2 * p.t);
+        const x = pa.x + (pb.x - pa.x) * e;
+        const y = pa.y + (pb.y - pa.y) * e;
+        const t0 = Math.max(0, e - 0.35);
+        // fade in at start and out at end of each edge
+        const fade = Math.sin(Math.PI * p.t);
         const g = ctx.createLinearGradient(pa.x + (pb.x - pa.x) * t0, pa.y + (pb.y - pa.y) * t0, x, y);
         g.addColorStop(0, "rgba(96,165,250,0)");
-        g.addColorStop(1, "rgba(147,197,253,0.95)");
+        g.addColorStop(1, `rgba(147,197,253,${0.4 * fade})`);
         ctx.strokeStyle = g;
-        ctx.lineWidth = 1.6;
+        ctx.lineWidth = 1.1;
+        ctx.lineCap = "round";
         ctx.beginPath();
         ctx.moveTo(pa.x + (pb.x - pa.x) * t0, pa.y + (pb.y - pa.y) * t0);
         ctx.lineTo(x, y);
@@ -141,18 +145,18 @@ export function HeroGraph3D() {
       for (const i of order) {
         const p = proj[i]!;
         const c = colors[i]!;
-        const L = lit[i]! * 0.965;
+        const L = lit[i]! * 0.988;
         lit[i] = L;
         const depth = 1 - (p.z + 1) / 2;
-        const r = (1.6 + depth * 2.4) * p.s * (1 + L * 0.9);
-        if (L > 0.05) {
-          ctx.globalAlpha = L * 0.5;
+        const r = (1.6 + depth * 2.4) * p.s * (1 + L * 0.4);
+        if (L > 0.03) {
+          ctx.globalAlpha = L * 0.18;
           ctx.fillStyle = c;
           ctx.beginPath();
           ctx.arc(p.x, p.y, r * 4, 0, Math.PI * 2);
           ctx.fill();
         }
-        ctx.globalAlpha = 0.25 + depth * 0.6 + L * 0.4;
+        ctx.globalAlpha = 0.25 + depth * 0.6 + L * 0.2;
         ctx.fillStyle = c;
         ctx.beginPath();
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
