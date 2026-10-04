@@ -62,9 +62,10 @@ export function Header({ lang, dict }: Props) {
 
   return (
     <header className={headerClasses}>
-      <Link href={`/${lang}`} className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring rounded-lg shrink-0">
-        <div className={`flex h-10 w-10 items-center justify-center rounded-lg font-bold text-xl shadow-sm ${isHero ? "bg-white text-[#0a0a0a]" : "bg-text text-bg"}`}>AP</div>
-        <span className={`font-semibold leading-tight text-sm tracking-wide hidden sm:block ${isHero ? "text-white" : ""}`}>Algorithm<br/>Pattern Index</span>
+      <Link href={`/${lang}`} className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring rounded-full shrink-0 transition-transform hover:scale-105">
+        <div className={`flex h-10 w-10 items-center justify-center rounded-full font-bold text-sm tracking-tighter shadow-sm border ${isHero ? "bg-black/40 text-white border-white/20 backdrop-blur-md" : "bg-black text-white border-black"}`}>
+          AP.
+        </div>
       </Link>
 
       <div className={`flex-1 max-w-md w-full ml-auto ${isHero ? "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto" : ""}`}>
@@ -80,7 +81,7 @@ export function Header({ lang, dict }: Props) {
             placeholder={dict.search?.placeholder || "Search patterns..."}
             className={`w-full rounded-full pl-11 pr-4 py-2 text-sm focus:ring-2 focus:ring-focus-ring outline-none transition-shadow ${
               isHero 
-                ? "bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:bg-white/20" 
+                ? "bg-white/5 border border-white/10 text-white placeholder:text-white/50 focus:bg-white/10" 
                 : "bg-surface-muted border border-border/50 text-text"
             }`}
             aria-label={dict.search?.label || "Search"}
@@ -104,11 +105,11 @@ export function Header({ lang, dict }: Props) {
           </button>
         )}
 
-        {/* User Avatar Placeholder replacing with language switch */}
+        {/* Language switch */}
         <Link
           href={targetPath}
-          className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring ${
-            isHero ? "bg-emerald-500 text-white" : "bg-accent text-accent-contrast"
+          className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring ${
+            isHero ? "bg-black/60 text-white border border-white/20 backdrop-blur-sm" : "bg-black text-white"
           }`}
           title={dict.nav?.language || "Language"}
         >

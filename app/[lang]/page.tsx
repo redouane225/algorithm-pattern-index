@@ -14,21 +14,40 @@ export default async function IndexPage({ params }: { params: Params }): Promise
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-[#0a0a0a] text-white w-full">
+      <style>{`
+        @keyframes trace {
+          0% { stroke-dashoffset: 300; }
+          100% { stroke-dashoffset: 0; }
+        }
+        .anim-trace {
+          stroke-dasharray: 20 280;
+          animation: trace 6s linear infinite;
+        }
+        @keyframes glow {
+          0%, 100% { opacity: 0.3; transform: scale(1); filter: brightness(1); }
+          20% { opacity: 1; transform: scale(1.8); filter: brightness(1.5); }
+        }
+        .node { transform-origin: center; transform-box: fill-box; }
+      `}</style>
       {/* Cool Algorithm/Data Structure SVG Background */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          {/* Abstract Nodes and Edges */}
-          <circle cx="20" cy="30" r="1.5" fill="#EF4444" className="animate-[pulse_4s_ease-in-out_infinite]" />
-          <circle cx="40" cy="15" r="1" fill="#3B82F6" className="animate-[pulse_5s_ease-in-out_infinite_1s]" />
-          <circle cx="60" cy="40" r="2" fill="#9CA3AF" className="animate-[pulse_6s_ease-in-out_infinite_2s]" />
-          <circle cx="80" cy="25" r="1.5" fill="#EF4444" className="animate-[pulse_4s_ease-in-out_infinite_3s]" />
-          <circle cx="30" cy="70" r="2" fill="#3B82F6" className="animate-[pulse_5s_ease-in-out_infinite_4s]" />
-          <circle cx="50" cy="85" r="1" fill="#9CA3AF" className="animate-[pulse_6s_ease-in-out_infinite]" />
-          <circle cx="70" cy="65" r="1.5" fill="#EF4444" className="animate-[pulse_4s_ease-in-out_infinite_1s]" />
-          
-          <path d="M 20 30 L 40 15 L 60 40 L 80 25 L 70 65 L 50 85 L 30 70 Z" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.2" strokeDasharray="1 1" />
-          <path d="M 20 30 L 30 70 L 60 40 L 50 85" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.1" />
-          <path d="M 40 15 L 80 25 L 60 40" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.1" />
+          {/* Base faint lines */}
+          <path d="M 20 30 L 40 15 L 60 40 L 80 25 L 70 65 L 50 85 L 30 70 Z" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.2" />
+          <path d="M 20 30 L 30 70 L 60 40 L 50 85" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.1" />
+          <path d="M 40 15 L 80 25 L 60 40" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.1" />
+
+          {/* Animated trace line */}
+          <path d="M 20 30 L 40 15 L 60 40 L 80 25 L 70 65 L 50 85 L 30 70 Z" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="0.4" className="anim-trace" strokeLinecap="round" />
+
+          {/* Abstract Nodes - delay matches line arrival */}
+          <circle cx="20" cy="30" r="1.5" fill="#EF4444" className="node" style={{ animation: 'glow 6s linear infinite 0s' }} />
+          <circle cx="40" cy="15" r="1" fill="#3B82F6" className="node" style={{ animation: 'glow 6s linear infinite 0.7s' }} />
+          <circle cx="60" cy="40" r="2" fill="#9CA3AF" className="node" style={{ animation: 'glow 6s linear infinite 1.4s' }} />
+          <circle cx="80" cy="25" r="1.5" fill="#EF4444" className="node" style={{ animation: 'glow 6s linear infinite 2.1s' }} />
+          <circle cx="70" cy="65" r="1.5" fill="#EF4444" className="node" style={{ animation: 'glow 6s linear infinite 2.8s' }} />
+          <circle cx="50" cy="85" r="1" fill="#9CA3AF" className="node" style={{ animation: 'glow 6s linear infinite 3.5s' }} />
+          <circle cx="30" cy="70" r="2" fill="#3B82F6" className="node" style={{ animation: 'glow 6s linear infinite 4.2s' }} />
         </svg>
       </div>
 
