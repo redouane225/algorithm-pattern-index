@@ -22,7 +22,7 @@
     "check": "npm run lint && npm run typecheck && npm run validate:data && npm test && npm run audit && npm run build && npm run test:e2e"
   },
   "dependencies": {
-    "next": "16.3.8",
+    "next": "16.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
